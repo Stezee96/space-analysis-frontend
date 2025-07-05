@@ -21,7 +21,7 @@ function PredictForm() {
   useEffect(() => {
     const fetchDropdowns = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/api/distinct-values");
+        const res = await axios.get("https://space-analysis-backend.onrender.com/api/distinct-values");
         setDropdowns({
           rockets: res.data.rockets || [],
           companies: res.data.companies || [],
@@ -45,7 +45,7 @@ function PredictForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:8000/api/predict-mission-success', formData);
+      const res = await axios.post('https://space-analysis-backend.onrender.com/api/predict-mission-success', formData);
       setResult(res.data);
     } catch (err) {
       console.error(err);
