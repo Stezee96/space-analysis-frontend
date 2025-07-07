@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 
 import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
-import FilterButton from '../components/DropdownFilter';
-import Datepicker from '../components/Datepicker';
 import Banner from '../partials/Banner';
 import MissionStatusChart from "../components/MissionStatusChart";
 import TopCompaniesChart from "../components/TopCompaniesChart";
@@ -25,14 +23,12 @@ function Dashboard() {
     country: "All",
   });
 
-return (
-  <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-    <div>
-      <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-      <main className="grow">
-
+  return (
+    <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+      <div>
+        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <main className="grow">
           <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-
             {/* Title */}
             <div className="sm:flex sm:justify-between sm:items-center mb-8">
               <div className="mb-4 sm:mb-0">
@@ -51,12 +47,12 @@ return (
                 <StatOverview />
                 <InsightsPanel />
                 <div className="col-span-12 bg-white dark:bg-slate-800 p-4 rounded-xl shadow min-h-[400px] flex flex-col justify-start">
-                <MissionStatusChart filters={filters} />
-              </div>
+                  <GlobalFilterPanel filters={filters} setFilters={setFilters} />
+                </div>
               </div>
             </div>
 
-            {/* Charts in order*/}
+            {/* Charts */}
             <div className="grid grid-cols-12 gap-6 mt-6">
               <div className="col-span-12"><MissionStatusChart filters={filters} /></div>
               <div className="col-span-12"><TopCompaniesChart filters={filters} /></div>
@@ -68,7 +64,6 @@ return (
             </div>
           </div>
         </main>
-
         <Banner />
       </div>
     </div>
