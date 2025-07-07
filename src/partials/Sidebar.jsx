@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import Logo from "../assets/Logo.png"; // ✅ Make sure this path is correct!
+import Logo from "../assets/Logo.webp"; // ✅ Make sure this path is correct!
 
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const location = useLocation();
