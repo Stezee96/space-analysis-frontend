@@ -19,7 +19,7 @@ const Missions = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/api/distinct-values").then((res) => {
+    axios.get("https://space-analysis-backend.onrender.com/api/distinct-values").then((res) => {
       setRockets(res.data.rockets || []);
       setCompanies(res.data.companies || []);
     });

@@ -16,7 +16,7 @@ const HeatmapLaunches = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://space-analysis-backend.onrender.com/api/heatmap-data")
+    axios.get("https://space-analysis-backend.onrender.com/api/heatmap-data")
       .then((res) => setData(res.data))
       .catch((err) => console.error("Heatmap data fetch failed", err));
   }, []);

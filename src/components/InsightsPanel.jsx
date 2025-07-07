@@ -6,7 +6,7 @@ const InsightsPanel = () => {
 
   useEffect(() => {
     axios
-      .get("http://space-analysis-backend.onrender.com/api/launch-insights")
+      .get("https://space-analysis-backend.onrender.com/api/launch-insights")
       .then((res) => {
         if (Array.isArray(res.data)) {
           setInsights(res.data);
