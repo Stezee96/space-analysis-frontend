@@ -68,8 +68,9 @@ const toggleCountry = async (country) => {
             </tr>
           </thead>
           <tbody className="text-gray-700 dark:text-gray-100 divide-y divide-gray-100 dark:divide-slate-700">
-  {Array.isArray(data) ? (
+  {data?.length ? (
     data.map((row, index) => (
+
   <React.Fragment key={index}>
     <tr
       className="cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 transition"
