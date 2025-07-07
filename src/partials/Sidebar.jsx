@@ -55,14 +55,20 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
       {/* Sidebar */}
       <div
         ref={sidebar}
-        className={`flex flex-col absolute z-40 left-0 top-0 h-full w-64 bg-white dark:bg-gray-800 p-4 transition-all duration-200 ease-in-out ${
+        className={`flex flex-col absolute z-40 left-0 top-0 h-full w-64 bg-white dark:bg-gray-800 p-4 transition-colors duration-200 ease-in-out ${
           sidebarOpen ? "translate-x-0" : "-translate-x-64"
         } lg:static lg:translate-x-0`}
       >
         {/* Logo and close button */}
         <div className="flex justify-between items-center mb-10">
           <NavLink to="/" className="flex items-center space-x-2">
-            <img src={Logo} alt="AstroRisk Logo" className="h-10 w-auto" />
+            <img
+              src={Logo}
+              alt="AstroRisk Logo"
+              width="100"
+              height="40"
+              className="h-10 w-auto"
+            />
             <span className="text-xl font-bold text-gray-800 dark:text-white">AstroRisk</span>
           </NavLink>
 

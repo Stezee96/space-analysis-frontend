@@ -50,7 +50,7 @@ return (
               <div className="col-span-12 space-y-6">
                 <StatOverview />
                 <InsightsPanel />
-                <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md">
+                <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md min-h-[300px]">
                   <GlobalFilterPanel filters={filters} setFilters={setFilters} />
                 </div>
               </div>

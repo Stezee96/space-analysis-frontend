@@ -7,14 +7,15 @@ import RocketStatusBarChart from "../components/RocketStatusBarChart";
 
 // Example ML/Analytics components
 const MissionRiskPrediction = () => (
-  <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md">
+  <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md min-h-[300px]">
     <h2 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">Mission Risk Prediction</h2>
     <PredictForm /> {/* ⬅️ Render the actual prediction form */}
   </div>
 );
 
 const FeatureCorrelationHeatmap = () => (
-  <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md">
+  <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md min-h-[300px]">
+
     <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">Feature Correlation Heatmap</h2>
     <RocketStatusBarChart />
   </div>
