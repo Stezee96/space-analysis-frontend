@@ -50,9 +50,9 @@ return (
               <div className="col-span-12 space-y-6">
                 <StatOverview />
                 <InsightsPanel />
-                <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md min-h-[300px]">
-                  <GlobalFilterPanel filters={filters} setFilters={setFilters} />
-                </div>
+                <div className="col-span-12 bg-white dark:bg-slate-800 p-4 rounded-xl shadow min-h-[400px] flex flex-col justify-start">
+                <MissionStatusChart filters={filters} />
+              </div>
               </div>
             </div>
 
