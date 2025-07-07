@@ -31,7 +31,7 @@ function DropdownProfile({
   });
 
   return (
-    <div className="relative inline-flex">
+    <div className="relative inline-flex min-w-[150px]">
       <button
         ref={trigger}
         className="inline-flex justify-center items-center group"

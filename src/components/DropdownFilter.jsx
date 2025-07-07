@@ -54,7 +54,7 @@ function DropdownFilter({ align }) {
   });
 
   return (
-    <div className="relative inline-flex">
+    <div className="relative inline-flex min-w-[150px]">
       <button
         ref={trigger}
         className="btn px-2.5 bg-white dark:bg-gray-800 border-gray-200 hover:border-gray-300 dark:border-gray-700/60 dark:hover:border-gray-600 text-gray-400 dark:text-gray-500"
