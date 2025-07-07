@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Transition from '../utils/Transition';
-import Logo from '../assets/Logo.png'; // ✅ Import your logo!
+import Logo from '../assets/Logo.webp'; // ✅ Import your logo!
 
 function DropdownProfile({
   align
