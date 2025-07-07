@@ -46,7 +46,7 @@ const TopLaunchLocationsChart = ({ filters }) => {
     };
 
     axios
-      .get("http://localhost:8000/api/top-launch-locations", { params })
+      .get("http://space-analysis-backend.onrender.com/api/top-launch-locations", { params })
       .then((res) => setData(res.data))
       .catch((err) => console.error("API error:", err));
   }, [filters]);

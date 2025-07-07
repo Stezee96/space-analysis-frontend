@@ -53,7 +53,7 @@ const MissionStatusChart = ({ filters, setFilters }) => {
     };
 
     axios
-      .get("http://localhost:8000/api/mission-status", { params })
+      .get("http://space-analysis-backend.onrender.com/api/mission-status", { params })
       .then((res) => setData(res.data))
       .catch((err) => console.error("API error:", err));
   }, [filters]);

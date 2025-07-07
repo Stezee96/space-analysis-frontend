@@ -9,7 +9,7 @@ const [locationData, setLocationData] = useState([]);
 
  useEffect(() => {
   axios
-    .get("http://localhost:8000/api/launch-summary-by-country")
+    .get("http://space-analysis-backend.onrender.com/api/launch-summary-by-country")
     .then((res) => {
       console.log("Launch Summary API response (typeof):", typeof res.data, res.data);
       if (Array.isArray(res.data)) {
@@ -30,7 +30,7 @@ const toggleCountry = async (country) => {
   }
 
   try {
-    const res = await axios.get(`http://localhost:8000/api/launch-sites-by-country?country=${country}`);
+    const res = await axios.get(`http://space-analysis-backend.onrender.com/api/launch-sites-by-country?country=${country}`);
     console.log("RAW response for", country, ":", res.data);
 
     if (Array.isArray(res.data)) {

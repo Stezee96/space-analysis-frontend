@@ -46,7 +46,7 @@ const LaunchesPerYearChart = ({ filters }) => {
     };
 
     axios
-      .get("http://localhost:8000/api/launches-per-year", { params })
+      .get("http://space-analysis-backend.onrender.com/api/launches-per-year", { params })
       .then((res) => setData(res.data))
       .catch((err) => console.error("API error:", err));
   }, [filters]);

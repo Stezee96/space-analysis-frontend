@@ -6,7 +6,7 @@ const StatOverview = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/launch-stat-summary")
+      .get("http://space-analysis-backend.onrender.com/api/launch-stat-summary")
       .then((res) => {
         setStats(res.data);
       })

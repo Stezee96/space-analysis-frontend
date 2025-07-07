@@ -45,7 +45,7 @@ const TopCompaniesChart = ({ filters }) => {
     };
 
     axios
-      .get("http://localhost:8000/api/top-companies", { params })
+      .get("http://space-analysis-backend.onrender.com/api/top-companies", { params })
       .then((res) => setData(res.data))
       .catch((err) => console.error("API error:", err));
   }, [filters]);

@@ -34,7 +34,7 @@ const LaunchOutcomeChart = ({ filters }) => {
     };
 
     axios
-      .get("http://localhost:8000/api/launch-outcome", { params })
+      .get("http://space-analysis-backend.onrender.com/api/launch-outcome", { params })
       .then((res) => setData(res.data))
       .catch((err) => console.error("API error:", err));
   }, [filters]);
