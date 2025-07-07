@@ -5,19 +5,22 @@ const InsightsPanel = () => {
   const [insights, setInsights] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://space-analysis-backend.onrender.com/api/dashboard-summary")
-      .then((res) => {
-        if (Array.isArray(res.data.insights)) {
-          setInsights(res.data.insights);
-        } else {
-          console.error("Expected insights array but got:", res.data.insights);
-        }
-      })
-      .catch((err) => {
-        console.error("Failed to fetch insights:", err);
-      });
-  }, []);
+  axios
+    .get("https://space-analysis-backend.onrender.com/api/launch-insights")
+    .then((res) => {
+      if (Array.isArray(res.data)) {
+        setInsights(res.data);
+      } else {
+        console.error("Expected array but got:", res.data);
+        setInsights([]);
+      }
+    })
+    .catch((err) => {
+      console.error("Failed to fetch insights:", err);
+      setInsights([]);
+    });
+}, []);
+
 
   return (
     <div className="bg-white dark:bg-slate-800 shadow rounded-xl p-6 mb-8">

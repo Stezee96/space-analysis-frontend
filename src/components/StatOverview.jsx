@@ -21,13 +21,14 @@ const StatOverview = () => {
       });
   }, []);
 
-  if (!stats) {
-    return (
-      <div className="text-gray-500 dark:text-gray-400 text-center mb-8">
-        Loading mission summary...
-      </div>
-    );
-  }
+  if (!stats || stats.error) {
+  return (
+    <div className="text-gray-500 dark:text-gray-400 text-center mb-8">
+      {stats?.error || "Loading mission summary..."}
+    </div>
+  );
+}
+
 
   const statStyle =
     "bg-white dark:bg-slate-800 shadow rounded-xl px-5 py-4 text-center";
