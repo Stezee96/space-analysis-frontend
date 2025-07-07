@@ -7,7 +7,6 @@ import {
   YAxis,
   Tooltip,
   ResponsiveContainer,
-  Label,
 } from "recharts";
 
 const CustomTooltip = ({ active, payload, label }) => {
@@ -16,7 +15,8 @@ const CustomTooltip = ({ active, payload, label }) => {
   const statusIcon = {
     Success: "✅",
     Failure: "❌",
-    Partial: "⚠️",
+    "Partial Failure": "⚠️",
+    "Prelaunch Failure": "🚀",
     Other: "❓",
   };
 
@@ -40,7 +40,7 @@ const CustomTooltip = ({ active, payload, label }) => {
   );
 };
 
-const MissionStatusChart = ({ filters, setFilters }) => {
+const MissionStatusChart = ({ filters }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -53,18 +53,19 @@ const MissionStatusChart = ({ filters, setFilters }) => {
     };
 
     axios
-      .get("https://space-analysis-backend.onrender.com/api/mission-status", { params })
-      .then((res) => setData(res.data))
+      .get("https://space-analysis-backend.onrender.com/api/dashboard-summary", { params })
+      .then((res) => {
+        // IMPORTANT: Adjust to pull nested mission_status_counts
+        setData(res.data.mission_status_counts);
+      })
       .catch((err) => console.error("API error:", err));
   }, [filters]);
 
   return (
     <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md min-h-[400px]">
-      {/* MOVE Filter Panel inside the chart card */}
-
       <h2 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-3 flex items-center gap-2">
-  <span>🚀</span> Mission Status
-</h2>
+        <span>🚀</span> Mission Status
+      </h2>
       <ResponsiveContainer width="100%" height={320}>
         <BarChart data={data}>
           <XAxis
@@ -80,6 +81,5 @@ const MissionStatusChart = ({ filters, setFilters }) => {
     </div>
   );
 };
-
 
 export default MissionStatusChart;

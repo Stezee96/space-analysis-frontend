@@ -6,12 +6,12 @@ const InsightsPanel = () => {
 
   useEffect(() => {
     axios
-      .get("https://space-analysis-backend.onrender.com/api/launch-insights")
+      .get("https://space-analysis-backend.onrender.com/api/dashboard-summary")
       .then((res) => {
-        if (Array.isArray(res.data)) {
-          setInsights(res.data);
+        if (Array.isArray(res.data.insights)) {
+          setInsights(res.data.insights);
         } else {
-          console.error("Expected array but got:", res.data);
+          console.error("Expected insights array but got:", res.data.insights);
         }
       })
       .catch((err) => {

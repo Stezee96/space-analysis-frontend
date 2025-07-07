@@ -6,12 +6,18 @@ const StatOverview = () => {
 
   useEffect(() => {
     axios
-      .get("https://space-analysis-backend.onrender.com/api/launch-stat-summary")
+      .get("https://space-analysis-backend.onrender.com/api/dashboard-summary")
       .then((res) => {
-        setStats(res.data);
+        setStats({
+          total_missions: res.data.total_missions,
+          first_launch: res.data.first_launch,
+          most_used_rocket: res.data.most_used_rocket,
+          top_company: res.data.top_company,
+          top_location: res.data.top_location
+        });
       })
       .catch((err) => {
-        console.error("Failed to fetch stat summary:", err);
+        console.error("Failed to fetch dashboard summary:", err);
       });
   }, []);
 

@@ -47,7 +47,7 @@ function Dashboard() {
               <div className="col-span-12 space-y-6">
                 <StatOverview />
                 <InsightsPanel />
-                  <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow h-[200px]">
+                  <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow h-[200px] overflow-y-auto">
                   <GlobalFilterPanel filters={filters} setFilters={setFilters} />
                 </div>
               </div>

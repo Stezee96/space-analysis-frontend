@@ -46,8 +46,8 @@ const LaunchesPerYearChart = ({ filters }) => {
     };
 
     axios
-      .get("https://space-analysis-backend.onrender.com/api/launches-per-year", { params })
-      .then((res) => setData(res.data))
+      .get("https://space-analysis-backend.onrender.com/api/dashboard-summary", { params })
+      .then((res) => setData(res.data.launches_per_year))
       .catch((err) => console.error("API error:", err));
   }, [filters]);
 
@@ -62,7 +62,7 @@ const LaunchesPerYearChart = ({ filters }) => {
   }, []);
 
   // Set color for axis label text
-  const labelColor = isDark ? "#d1d5db" : "#334155"; // Tailwind's slate-300 for dark, slate-800 for light
+  const labelColor = isDark ? "#d1d5db" : "#334155";
 
   return (
     <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md min-h-[400px]">
@@ -106,22 +106,26 @@ const LaunchesPerYearChart = ({ filters }) => {
             />
           </YAxis>
           <Tooltip content={<CustomTooltip />} />
-          <Bar dataKey="count" fill="#f59e0b" />
+          <Bar
+            dataKey="count"
+            fill="#f59e0b"
+            className="hover:fill-amber-500 transition-colors duration-200"
+          />
         </BarChart>
       </ResponsiveContainer>
 
       <style jsx="true">{`
         :root.dark .recharts-cartesian-axis-tick-value {
-          fill: #d1d5db; /* Lighter text in dark mode */
+          fill: #d1d5db;
         }
         :root.dark .recharts-cartesian-axis-line,
         :root.dark .recharts-cartesian-grid-horizontal line,
         :root.dark .recharts-cartesian-grid-vertical line {
-          stroke: #475569; /* Softer lines in dark mode */
+          stroke: #475569;
         }
         :root.dark .recharts-bar-rectangle path {
-          fill: #4ade80 !important; /* Light green bars for contrast */
-          stroke: #ffffff !important; /* White border for bars */
+          fill: #4ade80 !important;
+          stroke: #ffffff !important;
         }
       `}</style>
     </div>

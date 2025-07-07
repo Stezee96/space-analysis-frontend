@@ -34,8 +34,8 @@ const LaunchOutcomeChart = ({ filters }) => {
     };
 
     axios
-      .get("https://space-analysis-backend.onrender.com/api/launch-outcome", { params })
-      .then((res) => setData(res.data))
+      .get("https://space-analysis-backend.onrender.com/api/dashboard-summary", { params })
+      .then((res) => setData(res.data.launch_outcomes))
       .catch((err) => console.error("API error:", err));
   }, [filters]);
 
@@ -49,7 +49,7 @@ const LaunchOutcomeChart = ({ filters }) => {
     return () => observer.disconnect();
   }, []);
 
-  const labelColor = isDark ? "#d1d5db" : "#334155"; // Lighter for dark mode
+  const labelColor = isDark ? "#d1d5db" : "#334155";
 
   return (
     <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md min-h-[400px] h-[400px]">
