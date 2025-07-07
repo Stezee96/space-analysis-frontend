@@ -73,21 +73,21 @@ function DropdownFilter({ align }) {
           <path d="M0 3a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1ZM3 8a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1ZM7 12a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2H7Z" />
         </svg>
       </button>
-      <Transition
-        show={dropdownOpen}
-        tag="div"
-        className={`origin-top-right z-10 absolute top-full left-0 right-auto min-w-56 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700/60 pt-1.5 rounded-lg shadow-lg overflow-hidden mt-1 ${
-          align === "right"
-            ? "md:left-auto md:right-0"
-            : "md:left-0 md:right-auto"
-        }`}
-        enter="transition ease-out duration-200 transform"
-        enterStart="opacity-0 -translate-y-2"
-        enterEnd="opacity-100 translate-y-0"
-        leave="transition ease-out duration-200"
-        leaveStart="opacity-100"
-        leaveEnd="opacity-0"
-      >
+            <Transition
+          show={dropdownOpen}
+          tag="div"
+          className={`origin-top-right z-10 absolute top-full left-0 right-auto w-56 min-h-[200px] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700/60 pt-1.5 rounded-lg shadow-lg overflow-hidden mt-1 ${
+            align === "right"
+              ? "md:left-auto md:right-0"
+              : "md:left-0 md:right-auto"
+          }`}
+          enter="transition ease-out duration-200 transform"
+          enterStart="opacity-0 -translate-y-2"
+          enterEnd="opacity-100 translate-y-0"
+          leave="transition ease-out duration-200"
+          leaveStart="opacity-100"
+          leaveEnd="opacity-0"
+        >
         <div ref={dropdown}>
           <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase pt-1.5 pb-2 px-3">
             Filters
