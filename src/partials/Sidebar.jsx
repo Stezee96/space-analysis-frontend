@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import Logo from "../assets/Logo.webp"; // ✅ Make sure this path is correct!
+import Logo from "../assets/Logo.webp";
 
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const location = useLocation();
@@ -44,24 +44,25 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
 
   return (
     <div className="min-w-fit">
-      {/* Overlay for mobile */}
+      {/* Overlay */}
       <div
         className={`fixed inset-0 bg-gray-900/30 z-40 lg:hidden transition-opacity duration-200 ${
           sidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         aria-hidden="true"
+        onClick={() => setSidebarOpen(false)}
       ></div>
 
       {/* Sidebar */}
       <div
-  ref={sidebar}
-  className={`flex flex-col absolute z-40 left-0 top-0 h-full w-64 bg-white dark:bg-gray-800 p-4 transition-transform duration-200 ease-in-out
-    ${sidebarOpen ? "translate-x-0 pointer-events-auto" : "-translate-x-64 pointer-events-none"}
-    lg:static lg:translate-x-0 lg:pointer-events-auto`}
+        ref={sidebar}
+        className={`flex flex-col fixed z-50 left-0 top-0 h-full w-64 bg-white dark:bg-gray-800 p-4 transform transition-transform duration-200 ease-in-out ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } lg:static lg:translate-x-0`}
       >
-        {/* Logo and close button */}
+        {/* Logo + Close Button */}
         <div className="flex justify-between items-center mb-10">
-          <NavLink to="/" className="flex items-center space-x-2">
+          <NavLink to="/" className="flex items-center space-x-2" onClick={() => setSidebarOpen(false)}>
             <img
               src={Logo}
               alt="AstroRisk Logo"
@@ -84,14 +85,17 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           </button>
         </div>
 
-        {/* Navigation links */}
+        {/* Navigation */}
         <nav className="space-y-4">
           <NavLink
             end
             to="/"
+            onClick={() => setSidebarOpen(false)}
             className={({ isActive }) =>
               `block px-4 py-2 rounded text-sm font-medium ${
-                isActive ? "bg-violet-500 text-white" : "text-gray-700 hover:bg-gray-200 dark:text-gray-200"
+                isActive
+                  ? "bg-violet-500 text-white"
+                  : "text-gray-700 hover:bg-gray-200 dark:text-gray-200"
               }`
             }
           >
@@ -100,9 +104,12 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           <NavLink
             end
             to="/analytics"
+            onClick={() => setSidebarOpen(false)}
             className={({ isActive }) =>
               `block px-4 py-2 rounded text-sm font-medium ${
-                isActive ? "bg-violet-500 text-white" : "text-gray-700 hover:bg-gray-200 dark:text-gray-200"
+                isActive
+                  ? "bg-violet-500 text-white"
+                  : "text-gray-700 hover:bg-gray-200 dark:text-gray-200"
               }`
             }
           >
@@ -111,9 +118,12 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           <NavLink
             end
             to="/missions"
+            onClick={() => setSidebarOpen(false)}
             className={({ isActive }) =>
               `block px-4 py-2 rounded text-sm font-medium ${
-                isActive ? "bg-violet-500 text-white" : "text-gray-700 hover:bg-gray-200 dark:text-gray-200"
+                isActive
+                  ? "bg-violet-500 text-white"
+                  : "text-gray-700 hover:bg-gray-200 dark:text-gray-200"
               }`
             }
           >
@@ -122,9 +132,12 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           <NavLink
             end
             to="/about"
+            onClick={() => setSidebarOpen(false)}
             className={({ isActive }) =>
               `block px-4 py-2 rounded text-sm font-medium ${
-                isActive ? "bg-violet-500 text-white" : "text-gray-700 hover:bg-gray-200 dark:text-gray-200"
+                isActive
+                  ? "bg-violet-500 text-white"
+                  : "text-gray-700 hover:bg-gray-200 dark:text-gray-200"
               }`
             }
           >
