@@ -4,7 +4,6 @@ import Logo from "../assets/Logo.webp";
 
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const location = useLocation();
-  const { pathname } = location;
 
   const trigger = useRef(null);
   const sidebar = useRef(null);
@@ -17,7 +16,12 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
   useEffect(() => {
     const clickHandler = ({ target }) => {
       if (!sidebar.current || !trigger.current) return;
-      if (!sidebarOpen || sidebar.current.contains(target) || trigger.current.contains(target)) return;
+      if (
+        !sidebarOpen ||
+        sidebar.current.contains(target) ||
+        trigger.current.contains(target)
+      )
+        return;
       setSidebarOpen(false);
     };
     document.addEventListener("click", clickHandler);
@@ -45,13 +49,13 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
   return (
     <div className="min-w-fit">
       {/* Overlay */}
-      <div
-        className={`fixed inset-0 bg-gray-900/30 z-40 lg:hidden transition-opacity duration-200 ${
-          sidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-        aria-hidden="true"
-        onClick={() => setSidebarOpen(false)}
-      ></div>
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-gray-900/30 z-40 lg:hidden"
+          aria-hidden="true"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
 
       {/* Sidebar */}
       <div
@@ -60,9 +64,13 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } lg:static lg:translate-x-0`}
       >
-        {/* Logo + Close Button */}
+        {/* Logo and Close */}
         <div className="flex justify-between items-center mb-10">
-          <NavLink to="/" className="flex items-center space-x-2" onClick={() => setSidebarOpen(false)}>
+          <NavLink
+            to="/"
+            className="flex items-center space-x-2"
+            onClick={() => setSidebarOpen(false)}
+          >
             <img
               src={Logo}
               alt="AstroRisk Logo"
@@ -70,22 +78,28 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
               height="40"
               className="h-10 w-auto"
             />
-            <span className="text-xl font-bold text-gray-800 dark:text-white">AstroRisk</span>
+            <span className="text-xl font-bold text-gray-800 dark:text-white">
+              AstroRisk
+            </span>
           </NavLink>
 
           <button
             ref={trigger}
             className="lg:hidden text-gray-500 hover:text-gray-400"
-            onClick={() => setSidebarOpen(!sidebarOpen)}
+            onClick={() => setSidebarOpen(false)}
           >
             <span className="sr-only">Close sidebar</span>
             <svg className="w-6 h-6" viewBox="0 0 24 24">
-              <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" strokeWidth="2" />
+              <path
+                d="M6 18L18 6M6 6l12 12"
+                stroke="currentColor"
+                strokeWidth="2"
+              />
             </svg>
           </button>
         </div>
 
-        {/* Navigation */}
+        {/* Nav Links */}
         <nav className="space-y-4">
           <NavLink
             end
