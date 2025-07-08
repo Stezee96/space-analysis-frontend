@@ -48,21 +48,21 @@ function Dashboard() {
                 <StatOverview />
                 <InsightsPanel />
                   <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow h-[200px] overflow-y-auto">
-                {/* <GlobalFilterPanel filters={filters} setFilters={setFilters} /> */}               
-                 </div>
+                  <GlobalFilterPanel filters={filters} setFilters={setFilters} />
+                </div>
               </div>
             </div>
 
             {/* Charts */}
             <div className="grid grid-cols-12 gap-6 mt-6">
-              <div className="col-span-12"><MissionStatusChart filters={filters} /></div>
-              <div className="col-span-12"><TopCompaniesChart filters={filters} /></div>
-              <div className="col-span-12"><TopLaunchLocationsChart filters={filters} /></div>
-              <div className="col-span-12"><LaunchesPerYearChart filters={filters} /></div>
-              <div className="col-span-12"><TopRocketTypesChart filters={filters} /></div>
-              <div className="col-span-12"><LaunchOutcomeChart filters={filters} /></div>
-              <div className="col-span-12"><LaunchByCountryTable filters={filters} /></div>
-            </div>
+  {/* <div className="col-span-12"><MissionStatusChart filters={filters} /></div>
+  <div className="col-span-12"><TopCompaniesChart filters={filters} /></div>
+  <div className="col-span-12"><TopLaunchLocationsChart filters={filters} /></div>
+  <div className="col-span-12"><LaunchesPerYearChart filters={filters} /></div>
+  <div className="col-span-12"><TopRocketTypesChart filters={filters} /></div>
+  <div className="col-span-12"><LaunchOutcomeChart filters={filters} /></div>
+  <div className="col-span-12"><LaunchByCountryTable filters={filters} /></div> */}
+</div>
           </div>
         </main>
         <Banner />
