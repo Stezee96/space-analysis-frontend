@@ -1,12 +1,12 @@
 // src/pages/AboutMe.jsx
-import React from "react";
+import React, { useState } from "react";
 import Header from "../partials/Header";
 import Banner from "../partials/Banner";
 
-function AboutMe() {
+function AboutMe({ sidebarOpen, setSidebarOpen }) {
   return (
     <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-      <Header />
+      <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
       <main className="grow">
         <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-4xl mx-auto">

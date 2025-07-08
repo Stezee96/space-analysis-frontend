@@ -1,32 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from '../partials/Header';
 import Banner from '../partials/Banner';
 import PredictForm from "../components/PredictionForm";
 import RocketStatusBarChart from "../components/RocketStatusBarChart";
 
-
 // Example ML/Analytics components
 const MissionRiskPrediction = () => (
   <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md min-h-[300px]">
-    <h2 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">Mission Risk Prediction</h2>
+    <h2 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">
+      Mission Risk Prediction
+    </h2>
     <PredictForm /> {/* ⬅️ Render the actual prediction form */}
   </div>
 );
 
 const FeatureCorrelationHeatmap = () => (
   <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md min-h-[300px]">
-
-    <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">Feature Correlation Heatmap</h2>
+    <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">
+      Feature Correlation Heatmap
+    </h2>
     <RocketStatusBarChart />
   </div>
 );
 
-const Analytics = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
+function Analytics({ sidebarOpen, setSidebarOpen }) {
   return (
     <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-      {/* Remove Sidebar here! */}
       <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
       <main className="grow">
@@ -58,6 +57,6 @@ const Analytics = () => {
       <Banner />
     </div>
   );
-};
+}
 
 export default Analytics;
