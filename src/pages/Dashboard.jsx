@@ -48,8 +48,8 @@ function Dashboard() {
                 <StatOverview />
                 <InsightsPanel />
                   <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow h-[200px] overflow-y-auto">
-                  <GlobalFilterPanel filters={filters} setFilters={setFilters} />
-                </div>
+                {/* <GlobalFilterPanel filters={filters} setFilters={setFilters} /> */}               
+                 </div>
               </div>
             </div>
 
