@@ -54,10 +54,10 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
 
       {/* Sidebar */}
       <div
-        ref={sidebar}
-        className={`flex flex-col absolute z-40 left-0 top-0 h-full w-64 bg-white dark:bg-gray-800 p-4 transition-colors duration-200 ease-in-out ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-64"
-        } lg:static lg:translate-x-0`}
+  ref={sidebar}
+  className={`flex flex-col absolute z-40 left-0 top-0 h-full w-64 bg-white dark:bg-gray-800 p-4 transition-transform duration-200 ease-in-out
+    ${sidebarOpen ? "translate-x-0 pointer-events-auto" : "-translate-x-64 pointer-events-none"}
+    lg:static lg:translate-x-0 lg:pointer-events-auto`}
       >
         {/* Logo and close button */}
         <div className="flex justify-between items-center mb-10">
