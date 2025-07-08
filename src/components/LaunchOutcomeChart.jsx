@@ -34,12 +34,11 @@ const LaunchOutcomeChart = ({ filters }) => {
     };
 
     axios
-      .get("https://space-analysis-backend.onrender.com/api/dashboard-summary", { params })
-      .then((res) => setData(res.data.launch_outcomes))
+      .get("https://space-analysis-backend.onrender.com/api/launch-outcome", { params })
+      .then((res) => setData(res.data))
       .catch((err) => console.error("API error:", err));
   }, [filters]);
 
-  // Watch for dark mode
   useEffect(() => {
     const observer = new MutationObserver(() => {
       setIsDark(document.documentElement.classList.contains("dark"));

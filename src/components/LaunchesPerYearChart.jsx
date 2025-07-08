@@ -46,12 +46,11 @@ const LaunchesPerYearChart = ({ filters }) => {
     };
 
     axios
-      .get("https://space-analysis-backend.onrender.com/api/dashboard-summary", { params })
-      .then((res) => setData(res.data.launches_per_year))
+      .get("https://space-analysis-backend.onrender.com/api/launches-per-year", { params })
+      .then((res) => setData(res.data))
       .catch((err) => console.error("API error:", err));
   }, [filters]);
 
-  // Watch for dark mode
   useEffect(() => {
     const observer = new MutationObserver(() => {
       setIsDark(document.documentElement.classList.contains("dark"));
@@ -61,7 +60,6 @@ const LaunchesPerYearChart = ({ filters }) => {
     return () => observer.disconnect();
   }, []);
 
-  // Set color for axis label text
   const labelColor = isDark ? "#d1d5db" : "#334155";
 
   return (

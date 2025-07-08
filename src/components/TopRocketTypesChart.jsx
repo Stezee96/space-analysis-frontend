@@ -36,8 +36,8 @@ const TopRocketTypesChart = ({ filters }) => {
     };
 
     axios
-      .get("https://space-analysis-backend.onrender.com/api/dashboard-summary", { params })
-      .then((res) => setData(res.data.top_rocket_types))
+      .get("https://space-analysis-backend.onrender.com/api/top-rocket-types", { params })
+      .then((res) => setData(res.data))
       .catch((err) => console.error("API error:", err));
   }, [filters]);
 
