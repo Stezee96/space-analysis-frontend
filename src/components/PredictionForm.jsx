@@ -16,6 +16,7 @@ function PredictForm() {
     locations: [],
   });
 
+  const [loading, setLoading] = useState(true);
   const [result, setResult] = useState(null);
 
   useEffect(() => {
@@ -29,6 +30,8 @@ function PredictForm() {
         });
       } catch (err) {
         console.error("Failed to load dropdown data", err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -53,11 +56,19 @@ function PredictForm() {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center py-12">
+        <div className="animate-bounce text-4xl">🚀</div>
+        <p className="mt-2 text-gray-600 dark:text-gray-300">Loading options...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md max-w-xl mx-auto">
       <h2 className="text-xl font-bold mb-4">🚀 Mission Success Prediction</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-
         <select name="rocket" value={formData.rocket} onChange={handleChange} className="w-full p-2 border rounded" required>
           <option value="">Select Rocket</option>
           {dropdowns.rockets.map((r) => (

@@ -24,7 +24,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 
 const TopRocketTypesChart = ({ filters }) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null); // null while loading
 
   useEffect(() => {
     const { yearRange, status, country } = filters;
@@ -38,16 +38,24 @@ const TopRocketTypesChart = ({ filters }) => {
     axios
       .get("https://space-analysis-backend.onrender.com/api/top-rocket-types", { params })
       .then((res) => setData(res.data))
-      .catch((err) => console.error("API error:", err));
+      .catch((err) => {
+        console.error("API error:", err);
+        setData([]); // show fallback
+      });
   }, [filters]);
 
   return (
-    <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md min-h-[400px]">
+    <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md min-h-[400px] flex flex-col justify-start">
       <h2 className="text-xl font-bold text-slate-800 dark:text-white mb-4">
         🧨 Top Rocket Types
       </h2>
 
-      {data.length === 0 ? (
+      {data === null ? (
+        <div className="flex flex-col items-center justify-center flex-1 py-10 text-gray-500 dark:text-gray-400">
+          <div className="animate-bounce text-4xl">🚀</div>
+          <p className="mt-2">Loading rockets...</p>
+        </div>
+      ) : data.length === 0 ? (
         <p className="text-gray-500 dark:text-gray-400 text-center py-10">
           No data available for this selection.
         </p>

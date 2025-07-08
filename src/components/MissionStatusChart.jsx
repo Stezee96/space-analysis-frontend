@@ -42,8 +42,10 @@ const CustomTooltip = ({ active, payload, label }) => {
 
 const MissionStatusChart = ({ filters }) => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     const { yearRange, status, country } = filters;
     const params = {
       start_year: yearRange[0],
@@ -54,11 +56,19 @@ const MissionStatusChart = ({ filters }) => {
 
     axios
       .get("https://space-analysis-backend.onrender.com/api/mission-status", { params })
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => console.error("API error:", err));
+      .then((res) => setData(res.data))
+      .catch((err) => console.error("API error:", err))
+      .finally(() => setLoading(false));
   }, [filters]);
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center py-10 bg-white dark:bg-slate-800 rounded-xl shadow-md min-h-[400px]">
+        <div className="animate-bounce text-4xl">🚀</div>
+        <span className="mt-2 text-gray-500 dark:text-gray-300">Loading mission status...</span>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md min-h-[400px]">

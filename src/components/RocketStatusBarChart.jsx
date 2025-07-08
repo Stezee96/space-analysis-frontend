@@ -1,4 +1,3 @@
-// src/components/HeatmapLaunches.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {
@@ -14,26 +13,28 @@ import {
 
 const HeatmapLaunches = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get("https://space-analysis-backend.onrender.com/api/heatmap-data")
       .then((res) => setData(res.data))
-      .catch((err) => console.error("Heatmap data fetch failed", err));
+      .catch((err) => console.error("Heatmap data fetch failed", err))
+      .finally(() => setLoading(false));
   }, []);
 
   const getColor = (status) => {
     switch (status) {
       case "Success":
-        return "#34d399"; // green
+        return "#34d399";
       case "Failure":
-        return "#f87171"; // red
+        return "#f87171";
       case "Partial Failure":
-        return "#fbbf24"; // yellow
+        return "#fbbf24";
       case "Prelaunch Failure":
-        return "#60a5fa"; // blue
+        return "#60a5fa";
       default:
-        return "#d1d5db"; // gray
+        return "#d1d5db";
     }
   };
 
@@ -44,12 +45,10 @@ const HeatmapLaunches = () => {
       </h2>
 
       <div className="w-full h-[400px]">
-        {data.length === 0 ? (
-          <div className="w-full h-full bg-gray-200 dark:bg-gray-700 animate-pulse rounded">
-            {/* Optional: Centered loading text */}
-            <div className="flex items-center justify-center h-full text-gray-500 dark:text-gray-400">
-              Loading heatmap...
-            </div>
+        {loading ? (
+          <div className="flex flex-col items-center justify-center h-full">
+            <div className="animate-bounce text-4xl">🚀</div>
+            <p className="mt-2 text-gray-500 dark:text-gray-400">Loading heatmap...</p>
           </div>
         ) : (
           <ResponsiveContainer width="100%" height="100%">

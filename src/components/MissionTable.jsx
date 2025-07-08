@@ -31,7 +31,14 @@ const MissionsTable = ({ rocket, company, status, startYear, endYear, search }) 
     fetchMissions();
   }, [rocket, company, status, startYear, endYear, search]);
 
-  if (loading) return <div className="text-gray-600 dark:text-gray-300">Loading missions...</div>;
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center py-10">
+        <div className="animate-bounce text-4xl">🚀</div>
+        <span className="mt-2 text-gray-600 dark:text-gray-300">Loading missions...</span>
+      </div>
+    );
+  }
 
   return (
     <div className="overflow-x-auto rounded-lg shadow ring-1 ring-black ring-opacity-5">

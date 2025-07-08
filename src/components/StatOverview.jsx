@@ -23,8 +23,9 @@ const StatOverview = () => {
 
   if (!stats || stats.error) {
     return (
-      <div className="text-gray-500 dark:text-gray-400 text-center mb-8">
-        {stats?.error || "Loading mission summary..."}
+      <div className="flex flex-col items-center justify-center py-10 text-gray-500 dark:text-gray-400">
+        <div className="animate-bounce text-4xl">🚀</div>
+        <p className="mt-2">{stats?.error || "Loading mission summary..."}</p>
       </div>
     );
   }

@@ -1,14 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
-
 import Transition from "../utils/Transition";
+import RocketLoader from "../components/ui/RocketLoader";
 
 function DropdownFilter({ align }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef(null);
   const dropdown = useRef(null);
-
-  //Clear  filtres on click clear button 
 
   const Checkrefs = {
     DirectorIndirect: useRef(null),
@@ -63,7 +61,6 @@ function DropdownFilter({ align }) {
         aria-expanded={dropdownOpen}
       >
         <span className="sr-only">Filter</span>
-        <wbr />
         <svg
           className="fill-current"
           width="16"
@@ -73,92 +70,39 @@ function DropdownFilter({ align }) {
           <path d="M0 3a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1ZM3 8a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1ZM7 12a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2H7Z" />
         </svg>
       </button>
-            <Transition
-          show={dropdownOpen}
-          tag="div"
-          className={`origin-top-right z-10 absolute top-full left-0 right-auto w-56 min-h-[200px] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700/60 pt-1.5 rounded-lg shadow-lg overflow-hidden mt-1 ${
-            align === "right"
-              ? "md:left-auto md:right-0"
-              : "md:left-0 md:right-auto"
-          }`}
-          enter="transition ease-out duration-200 transform"
-          enterStart="opacity-0 -translate-y-2"
-          enterEnd="opacity-100 translate-y-0"
-          leave="transition ease-out duration-200"
-          leaveStart="opacity-100"
-          leaveEnd="opacity-0"
-        >
+      <Transition
+        show={dropdownOpen}
+        tag="div"
+        className={`origin-top-right z-10 absolute top-full left-0 right-auto w-56 min-h-[200px] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700/60 pt-1.5 rounded-lg shadow-lg overflow-hidden mt-1 ${
+          align === "right"
+            ? "md:left-auto md:right-0"
+            : "md:left-0 md:right-auto"
+        }`}
+        enter="transition ease-out duration-200 transform"
+        enterStart="opacity-0 -translate-y-2"
+        enterEnd="opacity-100 translate-y-0"
+        leave="transition ease-out duration-200"
+        leaveStart="opacity-100"
+        leaveEnd="opacity-0"
+      >
         <div ref={dropdown}>
+          {/* Rocket Loader animation */}
+          <div className="flex justify-center py-4">
+            <RocketLoader />
+          </div>
+
           <div className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase pt-1.5 pb-2 px-3">
             Filters
           </div>
           <ul className="mb-4">
-            <li className="py-1 px-3">
-              <label className="flex items-center">
-                <input
-                  ref={Checkrefs.DirectorIndirect}
-                  type="checkbox"
-                  className="form-checkbox"
-                />
-                <span className="text-sm font-medium ml-2">
-                  Direct VS Indirect
-                </span>
-              </label>
-            </li>
-            <li className="py-1 px-3">
-              <label className="flex items-center">
-                <input
-                  ref={Checkrefs.RealTimeValue}
-                  type="checkbox"
-                  className="form-checkbox"
-                />
-                <span className="text-sm font-medium ml-2">
-                  Real Time Value
-                </span>
-              </label>
-            </li>
-            <li className="py-1 px-3">
-              <label className="flex items-center">
-                <input
-                  ref={Checkrefs.Topcahnnels}
-                  type="checkbox"
-                  className="form-checkbox"
-                />
-                <span className="text-sm font-medium ml-2">Top Channels</span>
-              </label>
-            </li>
-            <li className="py-1 px-3">
-              <label className="flex items-center">
-                <input
-                  ref={Checkrefs.SalesRefunds}
-                  type="checkbox"
-                  className="form-checkbox"
-                />
-                <span className="text-sm font-medium ml-2">
-                  Sales VS Refunds
-                </span>
-              </label>
-            </li>
-            <li className="py-1 px-3">
-              <label className="flex items-center">
-                <input
-                  ref={Checkrefs.LastOrder}
-                  type="checkbox"
-                  className="form-checkbox"
-                />
-                <span className="text-sm font-medium ml-2">Last Order</span>
-              </label>
-            </li>
-            <li className="py-1 px-3">
-              <label className="flex items-center">
-                <input
-                  ref={Checkrefs.TotalSpent}
-                  type="checkbox"
-                  className="form-checkbox"
-                />
-                <span className="text-sm font-medium ml-2">Total Spent</span>
-              </label>
-            </li>
+            {Object.entries(Checkrefs).map(([key, ref]) => (
+              <li key={key} className="py-1 px-3">
+                <label className="flex items-center">
+                  <input type="checkbox" ref={ref} className="form-checkbox" />
+                  <span className="text-sm font-medium ml-2">{key.replace(/([A-Z])/g, " $1")}</span>
+                </label>
+              </li>
+            ))}
           </ul>
           <div className="py-2 px-3 border-t border-gray-200 dark:border-gray-700/60 bg-gray-50 dark:bg-gray-700/20">
             <ul className="flex items-center justify-between">
