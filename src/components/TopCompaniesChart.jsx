@@ -45,10 +45,9 @@ const TopCompaniesChart = ({ filters }) => {
     };
 
     axios
-      .get("https://space-analysis-backend.onrender.com/api/dashboard-summary", { params })
+      .get("https://space-analysis-backend.onrender.com/api/top-companies", { params })
       .then((res) => {
-        // Only extract the companies part
-        setData(res.data.top_companies);
+        setData(res.data);
       })
       .catch((err) => console.error("API error:", err));
   }, [filters]);
