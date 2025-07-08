@@ -46,9 +46,9 @@ const TopLaunchLocationsChart = ({ filters }) => {
     };
 
     axios
-      .get("https://space-analysis-backend.onrender.com/api/dashboard-summary", { params })
+      .get("https://space-analysis-backend.onrender.com/api/top-launch-locations", { params })
       .then((res) => {
-        setData(res.data.top_launch_locations);
+        setData(res.data);
       })
       .catch((err) => console.error("API error:", err));
   }, [filters]);
