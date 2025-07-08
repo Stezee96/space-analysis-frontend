@@ -56,8 +56,8 @@ function Dashboard() {
             {/* Charts */}
             <div className="grid grid-cols-12 gap-6 mt-6">
   <div className="col-span-12"><MissionStatusChart filters={filters} /></div>
-  {/* <div className="col-span-12"><TopCompaniesChart filters={filters} /></div>
-  <div className="col-span-12"><TopLaunchLocationsChart filters={filters} /></div>
+   <div className="col-span-12"><TopCompaniesChart filters={filters} /></div>
+  {/*<div className="col-span-12"><TopLaunchLocationsChart filters={filters} /></div>
   <div className="col-span-12"><LaunchesPerYearChart filters={filters} /></div>
   <div className="col-span-12"><TopRocketTypesChart filters={filters} /></div>
   <div className="col-span-12"><LaunchOutcomeChart filters={filters} /></div>
