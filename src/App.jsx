@@ -1,4 +1,3 @@
-// App.jsx
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Sidebar from './partials/Sidebar';
@@ -24,10 +23,22 @@ export default function App() {
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
       <div className="flex flex-col flex-1 overflow-y-auto">
         <Routes>
-          <Route path="/" element={<Dashboard sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />} />
-          <Route path="/analytics" element={<Analytics />} />
-          <Route path="/missions" element={<Missions />} />
-          <Route path="/about" element={<AboutMe />} />
+          <Route
+            path="/"
+            element={<Dashboard sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />}
+          />
+          <Route
+            path="/analytics"
+            element={<Analytics sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />}
+          />
+          <Route
+            path="/missions"
+            element={<Missions sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />}
+          />
+          <Route
+            path="/about"
+            element={<AboutMe sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />}
+          />
         </Routes>
       </div>
     </div>
