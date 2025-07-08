@@ -53,10 +53,9 @@ const MissionStatusChart = ({ filters }) => {
     };
 
     axios
-      .get("https://space-analysis-backend.onrender.com/api/dashboard-summary", { params })
+      .get("https://space-analysis-backend.onrender.com/api/mission-status", { params })
       .then((res) => {
-        // IMPORTANT: Adjust to pull nested mission_status_counts
-        setData(res.data.mission_status_counts);
+        setData(res.data);
       })
       .catch((err) => console.error("API error:", err));
   }, [filters]);
